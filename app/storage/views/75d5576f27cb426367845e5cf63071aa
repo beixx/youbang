@@ -1,0 +1,45 @@
+<?php $__env->startSection('content'); ?>
+<div class="shop-index main taoxi">
+    <div class="breadcrumb"><a href=""><?php echo $city; ?></a>&gt;&gt;<a href="<?php echo asset('index/detail'); ?>/<?php echo $info->id; ?>"><?php echo $info->name; ?></a>&gt;&gt; 案例 </div>
+<div class="info-box dianpu">
+	<div class="txt-box">
+        <div class="txt lft">
+            <h2><?php echo $info->name; ?></h2>
+            <p>人均消费：<span class="red"><?php echo $info->person_price; ?></span>元<em>|</em>地址：<?php echo $info->address; ?></p>
+        </div>
+       <div class="btn1 rgt">
+            <a href="#">咨询商家</a>
+        </div>
+    </div>
+        <div class="jxuan">
+           <div class="multipleColumn">
+                <div class="bd">
+                    <div class="ulWrap">
+						<?php if(count($recommpics)){
+							foreach($recommpics as $v){
+						?>
+                        <ul class="taoxi"><!-- 把每次滚动的n个li放到1个ul里面 -->
+                        
+                            <li>
+                                <div class="pic"><a href="<?php echo asset('index/clientdetailpic'); ?>/<?php echo $v->id; ?>"><img src="<?php echo asset($v->firstcover[0]); ?>"/></a></div>
+                                <div class="title"><a href="<?php echo asset('index/clientdetailpic'); ?>/<?php echo $v->id; ?>"><?php echo $v->picName; ?></a></div>
+
+                                <div class="tag">
+                                <?php if(count($v->kind)){
+                                		foreach($v->kind as $t){
+                                	?>
+                                    <a href="javascript:void(0);"><?php echo $t; ?></a>
+                                    <?php }}?>
+                                </div>
+                            </li>
+                           <?php }}?>
+                        </ul>
+                    </div><!-- ulWrap End -->
+                </div><!-- bd End -->
+            </div><!-- multipleColumn End -->
+        </div> </div> </div>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

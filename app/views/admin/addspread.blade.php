@@ -1,0 +1,91 @@
+@extends('admin.base')
+@section('content')
+ 
+<div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+                    
+
+                </div><!-- End .heading-->
+
+                <!-- Build page from here: -->
+                <div class="row-fluid">
+
+                    <div class="span12">
+
+                        <div class="page-header">
+                            <h4>{{ $name }}</h4>
+                        </div>
+
+                        <form class="form-horizontal seperator"  action="{{ url('shop/savespread') }}" method="post" id="loginForm" enctype="multipart/form-data" />
+                           
+                            <input class="span4" id="username" type="hidden" name='tenantsId' value="{{ $id }}" />
+                    
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="username">设置商户是否推广:</label>
+                                        <select name="spread">
+                                        		<option value="1" <?php if(isset($info->spread) && $info->spread=='1'){ echo "selected=selected"; }?>>不推广</option>
+                                        		<option value="2" <?php if(isset($info->spread) && $info->spread=='2'){ echo "selected=selected"; }?>>推广</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             
+                             <div class="form-row row-fluid">
+                                       		<div class="span12">
+                                                <div class="row-fluid">
+                                                    <label class="form-label span2" for="checkboxes">开始日期(内容为日期的格式例如2017-8-8)</label>
+                                                    <div class="span4">
+                                                        <input  name="startSpreadTime"  value="<?php if(isset($info->startSpreadTime)){ echo date('Y-m-d',$info->startSpreadTime); } ?>" class="hasDatepicker text" id="datepicker" type="text">
+                                                    </div>
+                                                </div>
+                                            </div> 
+                            </div>
+                            <div class="form-row row-fluid">
+                                       		<div class="span12">
+                                                <div class="row-fluid">
+                                                    <label class="form-label span2" for="checkboxes">结束日期(内容为日期的格式例如2017-8-8)</label>
+                                                    <div class="span4">
+                                                        <input name="endSpreadTime" value="<?php if(isset($info->endSpreadTime)){ echo date('Y-m-d',$info->endSpreadTime); } ?>" class="hasDatepicker text" id="datepicker" type="text">
+                                                    </div>
+                                                </div>
+                                            </div> 
+                            </div>
+                            
+                            
+                            <div class="form-row row-fluid">        
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <div class="form-actions">
+                                        <div class="span2"></div>
+                                        <div class="span4 controls">
+                                            <button type="submit" class="btn btn-info marginR10">保存</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
+                            
+                    	</form>
+                    	
+                            
+
+                            
+                            
+                            
+                            
+                           
+                        
+                      
+                    </div><!-- End .span12 -->
+
+                </div><!-- End .row-fluid -
+                
+            </div><!-- End contentwrapper -->
+        </div>
+@stop

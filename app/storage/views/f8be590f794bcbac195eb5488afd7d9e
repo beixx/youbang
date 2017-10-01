@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>婚纱摄影</title>
+    <link rel="stylesheet" href="<?php echo asset('xincss/style1.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('xincss/dateRange.css'); ?>">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="<?php echo asset('xinjs/jquery.reveal.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo asset('xinjs/main.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo asset('xinjs/dateRange.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo asset('xinjs/jquery.SuperSlide.2.1.1.js'); ?>" ></script>
+    <script type="text/javascript" src="<?php echo asset('xinjs/template.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('xinjs/zepto.min.js'); ?>"></script>
+	
+    <style type="text/css">
+    ::-webkit-input-placeholder { /* WebKit browsers */ 
+color: #FFF; 
+} 
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+color: #FFF; 
+} 
+::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+color: #FFF; 
+} 
+:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+color: #FFF; 
+}
+.NoMore {
+    width: 100%;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="main">
+        <h1 class="lft"><a href="javascript:void(0)"><img src="<?php echo asset('xinimage/logo.png'); ?>"></a> </h1>       
+         <div class="city">
+            <ul class="nav-main">
+                <li id="li-1" class="txtCtr "><font class="area1" id="area" tt="beijing"><?php echo $city; ?></font><span>[切换]</span></li>
+            </ul>
+            <!--隐藏盒子-->
+            <div id="box-1" class="hidden-box hidden-loc-index">
+                <h3>当前所在的地区：<span class="area2">北京</span></h3>
+                <p class="quyu">华北东北</p>
+                <p>
+                    <a class="cy" tt="beijing" href="javascript:void(0)">北京</a><a class="cy" tt="tianjin" href="javascript:void(0)">天津</a><a class="cy" href="javascript:void(0)" tt="shenyang">沈阳</a><a class="cy" href="javascript:void(0)" tt="dalian">大连</a><a class="cy" href="javascript:void(0)" tt="haierbin">哈尔滨</a><a class="cy" href="javascript:void(0)" tt="shijiazhuang">石家庄</a>
+                </p>
+                <p class="quyu">华东地区</p>
+                <p>
+                    <a class="cy" href="javascript:void(0)" tt="shanghai">上海</a><a class="cy" href="javascript:void(0)" tt="hangzhou">杭州</a><a class="cy" href="javascript:void(0)" tt="xiamen">厦门</a><a class="cy" href="javascript:void(0)" tt="nanjing">南京</a><a class="cy" href="javascript:void(0)" tt="suzhou">苏州</a><a class="cy" href="javascript:void(0)" tt="wuxi">无锡</a><a class="cy" href="javascript:void(0)" tt="ningbo">宁波</a><a class="cy" href="javascript:void(0)" tt="fuzhou">福州</a><a class="cy" href="javascript:void(0)" tt="qingdao">青岛</a><a class="cy" href="javascript:void(0)" tt="hefei">合肥</a>
+                </p>
+                <p class="quyu">中部西部</p>
+                <p>
+                  <a class="cy" href="javascript:void(0)" tt="chengdu">成都</a><a class="cy" href="javascript:void(0)" tt="chongqing">重庆</a><a class="cy" href="javascript:void(0)" tt="changsha">长沙</a><a class="cy" href="javascript:void(0)" tt="zhengzhou">郑州</a><a class="cy" href="javascript:void(0)" tt="xian">西安</a><a class="cy" href="javascript:void(0)" tt="wuhan">武汉</a>
+                </p>
+                <p class="quyu">华南地区</p>
+                <p>
+                 <a class="cy" href="javascript:void(0)" tt="guangzhou">广州</a><a class="cy" href="javascript:void(0)" tt="shenzhen">深圳</a>
+                </p>
+            </div>
+        </div>
+        <nav>
+            <a href="<?php echo asset('index'); ?>">首页</a>
+            <a href="<?php echo asset('index'); ?>" class="cur">婚纱摄影</a>
+            <a href="javascript:void(0)">婚礼策划</a>
+            <a href="javascript:void(0)">数据营销</a>
+            <a href="<?php echo url('index/regular'); ?>?city=<?php echo $city; ?>">榜单规则</a>
+        </nav>
+                <div class="search"><ul><form id="search_form" action="/search/index" method="get" onsubmit="return false;"><li class="li1" style="position: relative;"><input type="text" name="keyword" placeholder="搜索商家" value="" id="search_keyword" autocomplete="off"><button type="submit" id="submit"><svg viewBox="0 0 16 16" class="Icon Icon--search" width="16" height="16" aria-hidden="true" style="height: 16px; width: 16px;"><title></title><g><path d="M12.054 10.864c.887-1.14 1.42-2.57 1.42-4.127C13.474 3.017 10.457 0 6.737 0S0 3.016 0 6.737c0 3.72 3.016 6.737 6.737 6.737 1.556 0 2.985-.533 4.127-1.42l3.103 3.104c.765.46 1.705-.37 1.19-1.19l-3.103-3.104zm-5.317.925c-2.786 0-5.053-2.267-5.053-5.053S3.95 1.684 6.737 1.684 11.79 3.95 11.79 6.737 9.522 11.79 6.736 11.79z"></path></g></svg></button></li></form></ul></div>
+    </div>
+</header>
+  <?php echo $__env->yieldContent('content'); ?>
+<footer class="txtCtr">
+<div class="tuijian">
+<h3>北京优选婚纱摄影机构<span>(按综合实力排名排序)</span></h3>
+<ul>
+<li>
+<a target="_blank" href="/Hotels-g291961-Ambergris_Caye_Belize_Cayes-Hotels.html">安柏葛利斯岛酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g188590-Amsterdam_North_Holland_Province-Hotels.html">阿姆斯特丹酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g1120537-Ashigarashimo_gun_Kanagawa_Prefecture_Kanto-Hotels.html">足柄下郡酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g189400-Athens_Attica-Hotels.html">雅典酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g255106-Auckland_North_Island-Hotels.html">奥克兰中心地区酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g293916-Bangkok-Hotels.html">曼谷酒店</a>
+
+</li>
+<li>
+<a target="_blank" href="/Hotels-g187497-Barcelona_Catalonia-Hotels.html">巴塞罗那酒店</a>
+
+</li>
+<li>
+<a target="_blank" href="/Hotels-g187323-Berlin-Hotels.html">柏林酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g188078-Bernese_Oberland_Canton_of_Bern-Hotels.html">伯恩高地酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g60745-Boston_Massachusetts-Hotels.html">波士顿酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g188644-Brussels-Hotels.html">布鲁塞尔酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g274887-Budapest_Central_Hungary-Hotels.html">布达佩斯酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g293917-Chiang_Mai-Hotels.html">清迈酒店</a>
+
+</li>
+<li>
+<a target="_blank" href="/Hotels-g35805-Chicago_Illinois-Hotels.html">芝加哥酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g1725258-City_of_Venice_Veneto-Hotels.html">威尼斯市区酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g298085-Da_Nang_Quang_Nam_Province-Hotels.html">岘港酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g295424-Dubai_Emirate_of_Dubai-Hotels.html">迪拜酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g186525-Edinburgh_Scotland-Hotels.html">爱丁堡酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g187895-Florence_Tuscany-Hotels.html">韩国艺匠ARTIZ STUDIO(北京店)</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g187337-Frankfurt_Hesse-Hotels.html">法兰克福酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297983-Goreme_Cappadocia-Hotels.html">哥乐美酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g293924-Hanoi-Hotels.html">河内酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g293925-Ho_Chi_Minh_City-Hotels.html">胡志明市酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297922-Hua_Hin_Prachuap_Khiri_Khan_Province-Hotels.html">华欣酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297907-Hualien_County_Taiwan-Hotels.html">花莲县酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g293974-Istanbul-Hotels.html">伊斯坦布尔酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297885-Jeju_Jeju_Island-Hotels.html">济州岛酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297696-Jimbaran_Bali-Hotels.html">金巴兰酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g298278-Johor_Bahru_Johor_Bahru_District_Johor-Hotels.html">新山酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297908-Kaohsiung_Taiwan-Hotels.html">高雄市酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g293890-Kathmandu_Kathmandu_Valley_Bagmati_Zone_Central_Region-Hotels.html">加德满都酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g303905-Ko_Lanta_Krabi_Province-Hotels.html">兰塔岛酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g303908-Ko_Phi_Phi_Don_Krabi_Province-Hotels.html?pid=39526">大皮皮岛酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g293918-Ko_Samui_Surat_Thani_Province-Hotels.html">苏梅岛酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g303910-Koh_Tao_Surat_Thani_Province-Hotels.html">龟岛酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g298562-Kobe_Hyogo_Prefecture_Kinki-Hotels.html">神户市酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g298307-Kota_Kinabalu_Kota_Kinabalu_District_West_Coast_Division_Sabah-Hotels.html">亚庇酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297927-Krabi_Town_Krabi_Province-Hotels.html">甲米镇酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g298570-Kuala_Lumpur_Wilayah_Persekutuan-Hotels.html">吉隆坡酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g297697-Kuta_Bali-Hotels.html">库塔酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g298564-Kyoto_Kyoto_Prefecture_Kinki-Hotels.html">京都酒店</a>
+
+</li>
+<li>
+<a target="_blank" href="/Hotels-g298283-Langkawi_Langkawi_District_Kedah-Hotels.html">兰卡威酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g45963-Las_Vegas_Nevada-Hotels.html">拉斯维加斯酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g189158-Lisbon_Lisbon_District_Central_Portugal-Hotels.html">里斯本酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g186338-London_England-Hotels.html">伦敦酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g32655-Los_Angeles_California-Hotels.html">洛杉矶酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g188064-Lucerne-Hotels.html">卢塞恩酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g187514-Madrid-Hotels.html">马德里酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g29220-Maui_Hawaii-Hotels.html">毛伊岛酒店</a>
+</li>
+<li>
+<a target="_blank" href="/Hotels-g306997-Melaka_Central_Melaka_District_Melaka_State-Hotels.html">马六甲酒店</a>
+</li>
+</ul>
+</div>
+        <div class="foot">
+        <div class="foo">
+        <div class="foots">
+        <span><a href="#">关于有榜</a><a target="_blank" href="http://youbangkeyi.mikecrm.com/E09npdx">商务合作</a><a href="#">免责说明</a><a href="#">营业执照</a><a target="_blank" href="http://youbangkeyi.mikecrm.com/zJDl6sd">投诉建议</a><a target="_blank" href="http://youbangkeyi.mikecrm.com/QTsqDmZ">CEO信箱</a></span>
+        © 2017 有榜 （youbangkeyi.com） 版权所有   京ICP备08107937号-1 北京智慧元素科技有限公司
+        </div>
+        <div class="foots1">
+        <a href="#"><img height=45px src="https://www.qiniu.com/assets/iso27001-ad552b09f8c40848363a0fbb04c4389f5b889eecaa785b4f39385d6d48ca8ec9.png"></a>
+        </div>
+        </div>
+        </div>
+    </footer>
+
+
+<script type="text/javascript">
+     			var nothingTemp = '<div id="nomore" class="NoMore"><p>暂无更多数据哦</p></div>';
+    $(document).ready(function(){
+                //子导航展开收缩
+                $(".sewvtop").click(function(){
+                    $(this).find("em").removeClass("lbaxztop2").addClass("lbaxztop").parents(".sewv").siblings().children(".sewvtop").find("em").removeClass("lbaxztop").addClass(".lbaxztop2");
+                    $(this).next(".sewvbm").toggle().parents(".sewv").siblings().find(".sewvbm").hide();
+                });
+				//定制服务start
+                $('.xq1').click(function(){
+					$('.xq1').removeClass('cur');
+					$(this).addClass('cur');
+                 });
+                var str = '';
+                 $('.xq2').click(function(){
+					//$('.xq2').removeClass('cur');
+					$(this).addClass('cur');
+					if(str){
+						str = str+','+$(this).text();
+					}else{
+						str = $(this).text();
+					}
+                 });
+
+                
+
+                 //定制服务end
+                /*鼠标离开下拉框关闭*/
+                $(".sewv").mouseleave(function(){
+                    $(".sewvbm").hide();
+                    $(this).children(".sewvtop").find("em").addClass("lbaxztop2");
+                });
+                
+                
+                //赋值
+                $(".sewvbm>li").click(function(){
+                    var selva=$(this).text();
+                    $(this).parents(".sewvbm").siblings(".sewvtop").find("span").text(selva);
+                    $(this).parent("ul").hide();
+                    $(this).parents(".sewv").children(".sewvtop").find("em").addClass("lbaxztop2");
+                });
+                
+            });
+
+    //模糊搜索商家
+	$('#submit').click(function(){
+		var keyword = $('#search_keyword').val();
+		var city = $('#area').text();
+		var link = $('#area').attr('tt')
+		location.href="http://web.weixinkc.com/2/myweb/public/"+link+'?city='+city+'&keyword='+keyword;
+	});
+
+	$('.cy').click(function(){
+		$('#area').html($(this).html());
+		$('.area2').html($(this).html());
+		var type=$("li").filter(".on").attr('tt');
+		var city = $(this).html();
+		var link = $(this).attr('tt')
+		$('#area').attr('tt',link);
+		location.href="http://web.weixinkc.com/2/myweb/public/"+link+'?city='+city;
+   })
+			
+			
+			$('.active').click(function(){
+				var type=$(this).attr('tt');
+				var city = $('#area').text();
+				 $.ajax({
+	 					url: "<?php echo url('index/search'); ?>",
+	 					type: "post",
+	 					dataType: "json",
+	 					data: {'type': type,'city': city},
+	 					success: function(data){
+	 						if(data.result=='00'){
+	 							$('#fenye').css('display','block');
+	 							$("#main").html(template("maintemp",data));	
+		 					}else{
+		 						$('#fenye').css('display','none');
+		 						$("#main").html(nothingTemp);
+				 			}
+	 					}
+	 			});
+			});
+			
+</script>
+</body>
+</html>

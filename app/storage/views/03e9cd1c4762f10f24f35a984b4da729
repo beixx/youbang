@@ -1,0 +1,110 @@
+<?php $__env->startSection('content'); ?>
+<div class="tsm">
+<div class="tsmt"><?php echo $city; ?><?php echo $keyword; ?>  相关搜索</div>
+<div class="tsmd">有榜为您找到相关结果<?php echo $count; ?>个</div>
+</div>
+<div class="index">
+<div class="bd" style="padding:0;">
+<div class="i-list">
+<div class="list" style="margin:0;">
+        <ul>
+        	<?php if(count($tenants)){ 
+          		foreach($tenants as $v){
+          			if($v->isVip==1){
+          	?>
+             <li>
+                <div class="num lft">
+                    <em class="vip_icon02 txtCtr">9</em>
+                    <div class="txtCtr s2 txt">持平</div>
+                </div>
+                <div class="pic-txt">
+                    <div class="txt-box">
+                        <a href="<?php echo url('index/detail'); ?>/<?php echo $v->id; ?>"><img src="<?php echo asset($v->cover); ?>"></a>
+                        <div class="txt">
+                            h3><a href="<?php echo url('index/detail'); ?>/<?php echo $v->id; ?>"><?php echo $v->name; ?></a> </h3>
+                            <div class="t1">人均消费：<span class="red">¥<?php echo $v->person_price; ?></span></div>
+                            <div class="t2"><span><?php echo $v->address; ?></span></div>
+                            <div class="t3"><span>品牌搜索<em><?php echo $v->brand_search_num; ?></em>次</span><span>全网好评<em><?php echo $v->praise_num; ?></em>条</span><span>全网差评<em><?php echo $v->bad_num; ?></em>条</span></div>
+                            <div class="tool">
+                                <em class="txtCtr blue"><?php echo $v->heat_index; ?></em>
+                                <div class="tooltip txtCtr">热度指数</div>
+                            </div>
+                            <div class="hot txtCtr">
+                                <a href="<?php echo url('index/votelist'); ?>??city=<?php echo $v->city; ?>&id=<?php echo $v->id; ?>">点评打榜</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+             <?php }else if($v->isVip==2){ ?>
+            <li>
+                <div class="num lft">
+                    <em class="n1 txtCtr"><?php echo $v->order_city; ?></em>
+                    <div class="txtCtr s1 txt"><?php if($v->is_up==0){ echo "持平"; }else if($v->is_up==1){ echo "上升"; }else if($v->is_up==2){ echo "下降";}?><?php if($v->is_up != 0){?><span><?php echo $v->	is_up_num; ?></span>位<?php }?></div>
+                </div>
+                <div class="pic-txt">
+                    <div class="txt-box">
+                        <div class="txt">
+                            <h3><a href="<?php echo url('index/detail'); ?>/<?php echo $v->id; ?>"><?php echo $v->name; ?></a> </h3>
+                            <div class="t1">人均消费：<span class="red">¥<?php echo $v->person_price; ?></span></div>
+                            <div class="t2"><span><?php echo $v->address; ?></span></div>
+                            <div class="t3"><span>品牌搜索<em><?php echo $v->brand_search_num; ?></em>次</span><span>全网好评<em><?php echo $v->praise_num; ?></em>条</span><span>全网差评<em><?php echo $v->bad_num; ?></em>条</span></div>
+                            <div class="tool">
+                                <em class="txtCtr blue"><?php echo $v->heat_index; ?></em>
+                                <div class="tooltip txtCtr">热度指数</div>
+                            </div>
+                            <div class="hot txtCtr">
+                                <a href="<?php echo url('index/votelist'); ?>??city=<?php echo $v->city; ?>&id=<?php echo $v->id; ?>">点评打榜</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pic-box">
+                        <div class="leftLoop">
+                            <div class="bd">
+                                <ul>
+                                	<?php if(isset($v->taoxis) && count($v->taoxis)){
+                                			foreach($v->taoxis as $key=>$t){
+                                				if($key<4){
+                                					if(count($t->cover)){
+                                						$covers = $v->cover;
+                                						$cover = $covers[0];
+                                					}
+                                		?>
+                                    <li>
+                                        <div class="pic"><a href="<?php echo url('index/detail'); ?>/<?php echo $v->id; ?>"><img src="<?php echo asset($cover); ?>" /></a></div>
+                                        <div class="title"><a href=""><?php echo $t->setName; ?></a></div>
+                                        <div class="price">
+                                            <span class="red">¥<?php echo $t->currentPrice; ?></span><em>原价 <i>¥<?php echo $t->price; ?></i></em>
+                                        </div>
+                                    </li>
+                                     <?php }}}?>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+			 <?php }}}else{?>
+      		<div id="nomore" class="NoMore">
+				<p>暂无更多数据哦</p>
+			</div>
+			
+      		<?php }?>
+            
+<div class="guanggao"><a href="#"><img src="https://i.dxlfile.com/adm/material/2016_09_30/2016093013131179898.jpg"></a></div>
+           
+
+        </ul>
+    </div>
+     <div class="page txtCtr">
+     		<?php if(isset($allpages) && $allpages){ 
+     			for($i=1;$i<=$allpages;$i++){
+     		?>
+          <a href="javascript:void(0)" class="<?php if($i==1){ ?>cur<?php }?> searchpage" tt="<?php echo $i; ?>"><?php echo ($i-1)*20+1; ?>-<?php echo $i*20;?></a>
+    		<?php }}?>
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

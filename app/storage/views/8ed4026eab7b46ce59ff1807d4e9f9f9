@@ -1,0 +1,290 @@
+<?php $__env->startSection('content'); ?>
+ 
+<div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+                    
+
+                </div><!-- End .heading-->
+
+                <!-- Build page from here: -->
+                <div class="row-fluid">
+
+                    <div class="span12">
+
+                        <div class="page-header">
+                            <h4><?php echo $name; ?></h4>
+                        </div>
+
+                        <form class="form-horizontal seperator"  action="<?php echo url('shop/savetaoxi'); ?>" method="post" id="loginForm" enctype="multipart/form-data" />
+                           
+                            <input class="span4" id="username" type="hidden" name='tenantsId' value="<?php echo $id; ?>" />
+                    		  <input class="span4" id="username" type="hidden" name='id' value="<?php if(isset($info->id)) echo $info->id; ?>" />
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="username">套系名称</label>
+                                        <input class="span4" id="username" type="text" name='setName' value="<?php if(isset($info->setName)) echo $info->setName; ?>" /><div><font color='red'></font></div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="username">套系价格(原价)</label>
+                                        <input class="span4" id="username" type="text" name='price' value="<?php if(isset($info->price)) echo $info->price; ?>" /><div><font color='red'></font></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="username">套系价格(现价)</label>
+                                        <input class="span4" id="username" type="text" name='currentPrice' value="<?php if(isset($info->currentPrice)) echo $info->currentPrice; ?>" /><div><font color='red'></font></div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="normal">套系活动说明:</label>
+                                        
+                                         <div class="span4 controls">
+                                             <textarea rows="3" cols="20" name="taoxiexplain"><?php if(isset($info->taoxiexplain)) echo $info->taoxiexplain; ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="normal">套系详情内容:</label>
+                                        
+                                        <div class="span4 controls">
+                                             <script id="editor" type="text/plain" style="width:800px;height:500px;" name="detail"><?php if(isset($info->detail)) echo $info->detail; ?></script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="normal">套系推荐:(1,2,3,4不同的值对应的推荐的位置)</label>
+                                        <div class="span4 controls">
+                                             <input class="span4" id="username" type="text" name="recommend" value="<?php if(isset($info->recommend)) echo $info->recommend; ?>" /><div><font color='red'></font></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="normal">套系来源:(1,2,3,4不同的值对应的来源)</label>
+                                        <div class="span4 controls">
+                                             <input class="span4" id="username" type="text" name="source" value="<?php if(isset($info->source)) echo $info->source; ?>" /><div><font color='red'></font></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="normal">套系关注数</label>
+                                        <div class="span4 controls">
+                                             <input class="span4" id="username" type="text" name="marknums" value="<?php if(isset($info->marknums)) echo $info->marknums; ?>" /><div><font color='red'></font></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="form-row row-fluid comment">
+                                <div class="span12">
+                                    <div class="row-fluid">
+               							<div class="up-pic">
+									        <div class="title"><em class="red">*</em>套系封面图:</div>
+									        <div class="pic-box" id="ImgCoverRegin">
+									            <?php if(isset($info->cover)){
+					                    			foreach($info->cover as $v){
+					                    		?>
+									            <div class="pic lft" style="display:block;">
+	                								<div class="close">
+														<input type="hidden" name="cover[]" value="<?php echo $v; ?>" id="user_bill" />
+													</div>
+	                								<img id="upload_img2" width="120px" src="<?php echo asset($v); ?>">
+	            								</div>
+									              <?php }}?>
+									        </div>
+									        <script type="text/html" id="ImgCoverTemp">
+												{{each list}}
+												<div class="pic lft">
+	                								<div class="close">
+														<input type="hidden" name="cover[]" value="{{$value}}" id="user_bill" />
+													</div>
+	                								<img id="upload_img2" width="120px" src="http://web.weixinkc.com/2/myweb/public/{{$value}}">
+	            								</div>
+												{{/each}}
+												</script>
+									        
+									          <div style="margin-top:20px;">点击上传套系封面图：<input class="weui-uploader__input" multiple="multiple"  id="photo_file" type="file" accept="image/*" onchange="SeleCoverImg(this);"/></div>
+									   	</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                             <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span2" for="username">套系风格:</label>
+                                       <?php foreach($styles as $key=> $v){ ?>
+                                       <input type="checkbox" name="kind[]" value="<?php echo $v->name; ?>" <?php if(isset($info->kind) && count($info->kind)){ foreach($info->kind as $t){ if($t==$v->name){ echo "checked=checked"; } }  }?>><?php echo $v->name; ?>
+                                       <?php }?>
+                                        <div><font color='red'></font></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                             
+                            
+                           <div class="form-row row-fluid comment">
+                                <div class="span12">
+                                    <div class="row-fluid">
+               							<div class="up-pic">
+									        <div class="title"><em class="red">*</em>套系图片:</div>
+									        <div class="pic-box" id="ImgPicRegin">
+									            <?php if(isset($info->picDetail)){
+					                    			foreach($info->picDetail as $v){
+					                    		?>
+									            <div class="pic lft" style="display:block;">
+	                								<div class="close">
+														<input type="hidden" name="picDetail[]" value="<?php echo $v; ?>" id="user_bill" />
+													</div>
+	                								<img id="upload_img2" width="120px" src="<?php echo asset($v); ?>">
+	            								</div>
+									              <?php }}?>
+									        </div>
+									        <script type="text/html" id="ImgPicTemp">
+												{{each list}}
+												<div class="pic lft">
+	                								<div class="close">
+														<input type="hidden" name="picDetail[]" value="{{$value}}" id="user_bill" />
+													</div>
+	                								<img id="upload_img2" width="120px" src="http://web.weixinkc.com/2/myweb/public/{{$value}}">
+	            								</div>
+												{{/each}}
+												</script>
+									        
+									          <div style="margin-top:20px;">点击上传套系图片：<input class="weui-uploader__input" multiple="multiple"  id="photo_file" type="file" accept="image/*" onchange="SelePicImg(this);"/></div>
+									   	</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-row row-fluid">        
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <div class="form-actions">
+                                        <div class="span2"></div>
+                                        <div class="span4 controls">
+                                            <button type="submit" class="btn btn-info marginR10">保存</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
+                            
+                    	</form>
+                    	
+                            
+
+                            
+                            
+                            
+                            
+                           
+                        
+                      
+                    </div><!-- End .span12 -->
+
+                </div><!-- End .row-fluid -
+                
+            </div><!-- End contentwrapper -->
+        </div>
+        
+        <script type="text/javascript">
+        $('.close').click(function(){
+				$(this).parent().remove();
+			});
+        	//选择图片(单据证明)
+		   	 function SeleCoverImg(ObjectDom){
+		   		 var FormObj = new FormData();
+		   		 var files = event.target.files;
+		            for (var index = 0; index < files.length; index ++)
+		            {
+		                var file = files[index];
+		   				EXIF.getData(file, function() {       
+		   					 FormObj.append("photo[]", file);
+		   					 SubmitCoverAjax(FormObj);
+		   			    }); 
+		            };
+		   	 };
+		   	//上传图片文件（单据证明）
+		    function SubmitCoverAjax(FormObj){
+		   		var ImgHttp = new XMLHttpRequest();
+		   		ImgHttp.onload = function(event){
+		   			var TempObj = JSON.parse(event.target.responseText || "{}");
+		           		if(TempObj.result == "00")
+		           		{
+		           			$("#ImgCoverRegin").append(template("ImgCoverTemp", TempObj || []));
+		           			$('.close').click(function(){
+		           				$(this).parent().remove();
+		           			});
+		           		}else{
+		           			$("#MarkBox").text("照片超过规定大小,上传失败");
+		           		};
+		           		setTimeout(function(){ layer.closeAll(); }, 1500);
+		   		};
+		           ImgHttp.open("post", "http://web.weixinkc.com/2/myweb/public/commentpt/savedanju", true);
+		           ImgHttp.send(FormObj);
+		   	};
+
+		  //选择图片(婚纱照片)
+		   	 function SelePicImg(ObjectDom){
+		   		 var FormObj = new FormData();
+		   		 var files = event.target.files;
+		            for (var index = 0; index < files.length; index ++)
+		            {
+		                var file = files[index];
+		   				EXIF.getData(file, function() {       
+		   					 FormObj.append("photo[]", file);
+		   					SubmitImgPicAjax(FormObj);
+		   			    }); 
+		            };
+		   	 };
+		   	//上传图片文件（单据证明）
+		    function SubmitImgPicAjax(FormObj){
+		   		var ImgHttp = new XMLHttpRequest();
+		   		ImgHttp.onload = function(event){
+		   			var TempObj = JSON.parse(event.target.responseText || "{}");
+		           		if(TempObj.result == "00")
+		           		{
+		           			$("#ImgPicRegin").append(template("ImgPicTemp", TempObj || []));
+		           			$('.close').click(function(){
+		           				$(this).parent().remove();
+		           			});
+		           		}else{
+		           			$("#MarkBox").text("照片超过规定大小,上传失败");
+		           		};
+		           		setTimeout(function(){ layer.closeAll(); }, 1500);
+		   		};
+		           ImgHttp.open("post", "http://web.weixinkc.com/2/myweb/public/commentpt/savepingphoto", true);
+		           ImgHttp.send(FormObj);
+		   	};
+        </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
